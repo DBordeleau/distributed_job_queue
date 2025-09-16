@@ -16,6 +16,12 @@ const (
 	StatusTerminated JobStatus = "dead" // in DLQ
 )
 
+type JobError struct {
+	Message   string
+	Timestamp time.Time
+	Stage     string // e.g., "executor", "scheduler"
+}
+
 type Job struct {
 	ID           string
 	Payload      []byte
@@ -30,7 +36,7 @@ type Job struct {
 	Status       JobStatus
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
-	LastError    string
+	LastErrors   []JobError
 }
 
 type Queue interface {
