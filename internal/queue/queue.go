@@ -17,16 +17,20 @@ const (
 )
 
 type Job struct {
-	ID          string
-	Payload     []byte
-	Priority    int // higher means higher priority
-	RunAt       time.Time
-	Attempts    int
-	MaxAttempts int
-	Status      JobStatus
-	CreatedAt   time.Time
-	UpdatedAt   time.Time
-	LastError   string
+	ID           string
+	Payload      []byte
+	DAGID        string
+	NodeID       string
+	CronExpr     string
+	Dependencies []string // job IDs that must complete before this runs
+	Priority     int      // higher means higher priority
+	RunAt        time.Time
+	Attempts     int
+	MaxAttempts  int
+	Status       JobStatus
+	CreatedAt    time.Time
+	UpdatedAt    time.Time
+	LastError    string
 }
 
 type Queue interface {
