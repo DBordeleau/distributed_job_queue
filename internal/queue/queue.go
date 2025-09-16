@@ -19,7 +19,7 @@ const (
 type JobError struct {
 	Message   string
 	Timestamp time.Time
-	Stage     string // e.g., "executor", "scheduler"
+	Stage     string
 }
 
 type Job struct {
