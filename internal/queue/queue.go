@@ -1,5 +1,3 @@
-// queue interface and job structure
-
 package queue
 
 import (
@@ -24,6 +22,7 @@ type JobError struct {
 
 type Job struct {
 	ID           string
+	index        int // needed for reheapify
 	Payload      []byte
 	DAGID        string
 	NodeID       string
